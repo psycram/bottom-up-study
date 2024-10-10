@@ -1,0 +1,13 @@
+.input-text-box{
+    background-color: white;
+    width: 30em;
+  }
+  
+  .login-container{
+    background-color: white;
+    width: 40%;
+    margin: auto;
+    padding: 1% 2%;
+    border-radius: 2.5%;
+  }
+

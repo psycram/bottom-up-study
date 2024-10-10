@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/premium.css') }}">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1786543445051550"
+    crossorigin="anonymous"></script>
+  <title>リアクションペーパー生成</title>
+</head>
+
+<body>
+  <div class="button-group">
+    <!-- スイッチボタンの追加 -->
+    <button class="gpt-button" onclick="window.location.href = '/mypage'">
+      gpt-3.5を使う
+    </button>
+  </div>
+  <section class="">
+    <div class="main-page-box">
+      <div class="margin">
+        <form id="create-text" action="{{ url_for('output_text') }}" method="post" enctype="multipart/form-data">
+          <div id="loadingMessage" style="display: none;" class="generating-box"><span
+              class="generating-text">生成中...</span></div>
+          <div class="mode-select-box">
+            <label for="function-select" class="long-text-box-label">機能を選択してください:</label>
+            <select id="mode-select" name="mode-select">
+              <option value="reaction-paper">リアクションペーパー生成</option>
+              <option value="note-creation">ノート生成</option>
+              <option value="problem-creation">問題生成</option>
+            </select>
+          </div>
+          <div class="flex">
+            <div class="half-box">
+              <label for="text" class="long-text-box-label">基になるテキスト</label>
+              <textarea class="long-text-box" id="input-text" name="input-text">{{ input_text }}</textarea>
+            </div>
+            <div class="half-box">
+              <label for="text" class="long-text-box-label">生成されたテキスト</label>
+              <textarea class="long-text-box" id="output-text" name="output-text">{{ output_text }}</textarea>
+            </div>
+          </div>
+          <div class="generate-button-box">
+            <input type="submit" id="generate-button" class="generate-button" value="感想を生成">
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</body>
+
+</html>

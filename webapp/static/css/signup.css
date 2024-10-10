@@ -1,0 +1,31 @@
+.upper-space {
+    height: 70px;
+    width: 100%;
+}
+
+.signup-container {
+    background-color: white;
+    width: 50%;
+    margin: auto;
+    padding: 1% 2%;
+    border-radius: 2.5%;
+}
+
+.signup-text{
+    font-size: 2rem;
+    text-align: center;
+}
+
+.input-text-box {
+    background-color: white;
+    width: 30em;
+}
+
+.signup-button {
+    margin-left: 80%;
+}
+
+#signup-decide-button {
+    background-color: orange;
+    border: none;
+}

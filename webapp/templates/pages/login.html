@@ -1,0 +1,24 @@
+{% extends "common.html" %}
+
+{% block content %}
+<section class="login-container">
+  <form id="login" action="/login" method="post">
+    <div>
+      <h4>ログイン</h4>
+      <span>{{notLogin}}</span>
+    </div>
+    <div>
+      <label for="email">メールアドレス</label>
+      <input type="text" id="username" name="username" class="input-text-box">
+    </div>
+    <div>
+      <label for="password">パスワード</label>
+      <input type="password" id="password" name="password" class="input-text-box">
+    </div>
+    <div class="login-decide-button">
+      <input type="submit" id="login-decide-button" value="ログイン">
+    </div>
+  </form>
+</section>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+{% endblock %}

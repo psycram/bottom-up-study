@@ -1,0 +1,59 @@
+/* 共通スタイル */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+  color: #333;
+  height: 100vh;
+}
+
+
+header {
+  display: flex;
+  align-items: center;
+  height: 10%;
+  width: 100%;
+  padding: none;
+  position: fixed;
+  top: 0px;
+  background: white;
+}
+
+.header-mini{
+  width: 30%;
+}
+
+.header-large{
+  width: 70%;
+}
+
+.humberger-menu{
+  width: 50%;
+  margin: auto;
+  font-size: 32px;
+}
+
+.title {
+  font-size: 24px;
+  color: #00a1e1;
+  margin-left: 10%;
+}
+
+
+.tab-selecter{
+    height: 12%;
+    width: 100%;
+    display: flex;
+    position :fixed;
+    bottom: 0px;
+    border-top:2px solid #00a1e1 ;
+  }
+
+.tab-button{
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #ffffff;
+  color: rgb(0, 162, 255);
+  text-align: center;
+  border: none;
+}

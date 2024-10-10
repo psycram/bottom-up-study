@@ -1,0 +1,62 @@
+{% extends "common.html" %}
+
+{% block content %}
+<section class="profile-section">
+  <div class="profile-part">
+    <div class="exp-box">
+      <div class="exp-bar">
+        <label for="exp">EXP</label>
+        <progress id="exp" value="253" max="300"></progress>
+      </div>
+      <div class="level">
+        <p>次のレベルまで</p>
+        <h2>253</h2>
+      </div>
+    </div>
+    <div class="avatar-box">
+      <div class="avatar"></div>
+    </div>
+  </div>
+
+  <button class="continue-btn">前回の続きから始める</button>
+
+  <div class="recommended-curriculum-box">
+    <div class="curriculum-item">
+      <p class="star">★</p>
+      <p>英単語 大学受験編 その1</p>
+    </div>
+    <div class="curriculum-item recommended">
+      <span class="recommend-label">オススメ！</span>
+      <p class="star">★</p>
+      <p>英単語 大学受験編 その2</p>
+    </div>
+    <div class="curriculum-item">
+      <p class="star">★</p>
+      <p>英単語 大学受験編 その3</p>
+    </div>
+  </div>
+
+  <p class="curriculum-link">カリキュラムを開く</p>
+
+</section>
+
+<section class="stats-section">
+  <div class="stats">
+    <div class="stats-item">
+      <p>連続勉強日数</p>
+      <h2>253 日</h2>
+    </div>
+    <div class="stats-item">
+      <p>総勉強時間</p>
+      <h2>253 時間</h2>
+    </div>
+  </div>
+</section>
+
+<div class="graph-section">
+  <p>成績推移</p>
+  <img src="graph.png" alt="成績推移のグラフ">
+</div>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+{% endblock %}

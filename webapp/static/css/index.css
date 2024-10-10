@@ -1,0 +1,160 @@
+.main-card{
+  margin-top: 35%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+
+.container {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  background-color: #f0f8ff;
+  border: 1px solid #00a1e1;
+  border-radius: 10px;
+}
+
+.profile-section{
+  margin-top: 25%;
+  margin-left: 2%;
+  margin-right: 2%;
+  padding: 4%;
+  border: 2px solid #00a1e1;
+  border-radius: 10px;
+}
+
+.profile-part {
+  display: flex;
+  align-items: center;
+}
+
+.exp-box{
+  width: 50%;
+}
+
+.exp-bar {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+#exp {
+  width: 50%;
+}
+
+.level {
+  text-align: center;
+  margin-bottom: 10px;
+}
+.avatar-box{
+  width: 50%;
+}
+
+.avatar {
+  margin: auto;
+  width: 80px;
+  height: 80px;
+  background-color: #666;
+  border-radius: 50%;
+
+}
+
+.continue-btn {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #00a1e1;
+  color: white;
+  text-align: center;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 22px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.recommended-curriculum-box {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 10px;
+}
+
+.curriculum-item {
+  color: white;
+  font-weight: 500;
+  font-size: small;
+  background:#00a1e1 ;
+  border-radius: 5px;
+  padding: 10px;
+  width: 30%;
+  text-align: center;
+}
+
+.star{
+  margin-top: 20px;
+}
+
+.recommended {
+  border-color: #ffa500;
+}
+
+.recommend-label {
+  background-color: #ffa500;
+  color: white;
+  padding: 2px 15px;
+  border-radius: 3px;
+  font-size: 12px;
+  position: absolute;
+  transform: translate(-50%, -100%);
+}
+
+.curriculum-link {
+  text-align: center;
+  color: #00a1e1;
+  font-size: 16px;
+}
+
+
+
+
+
+/* -------------stats-sction--------------- */
+.stats-section{
+  margin-top: 3%;
+  margin-left: 2%;
+  margin-right: 2%;
+  padding: 3%;
+  border: 2px solid #00a1e1;
+  border-radius: 10px;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-around;
+}
+
+.stats-item {
+  text-align: center;
+}
+
+.graph-section {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+footer {
+  display: flex;
+  justify-content: space-around;
+}
+
+.circle {
+  width: 40px;
+  height: 40px;
+  background-color: #00a1e1;
+  border-radius: 50%;
+}
