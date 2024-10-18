@@ -1,0 +1,23 @@
+{% extends "common.html" %}
+
+{% block content %}
+
+<div class="container">
+  <div class="curriculum-box">
+    {% for subject in subjects %}
+      {% for level in subject.levels %}
+        {% for unit in level.units %}
+          {% for course in unit.courses %}
+            <div class="curriculum-item">
+              <p class="star">★</p>
+              <p>{{ course.name }}</p>  <!-- 講座名を表示 -->
+            </div>
+          {% endfor %}
+        {% endfor %}
+      {% endfor %}
+    {% endfor %}
+  </div>
+</div>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/roadmap.css') }}">
+
+{% endblock %}

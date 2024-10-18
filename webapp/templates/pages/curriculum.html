@@ -1,0 +1,47 @@
+{% extends "common.html" %}
+
+{% block content %}
+
+<div class="container">
+  <!-- 科目ごとのタブ -->
+  <div class="language-tabs">
+    {% for index, subjectName in subjectNamesWithIndex %}
+    <input type="radio" id="tab{{ index }}" name="subject" class="tab-radio" {% if loop.first %}checked{% endif %}>
+    <label for="tab{{ index }}" class="tab-label">{{ subjectName }}</label>
+    {% endfor %}
+  </div>
+
+  <!-- 科目ごとの内容を表示 -->
+  {% for subject in subjects %}
+  <div class="subject-content" id="content-tab{{ loop.index0 }}" {% if not loop.first %}style="display:none;" {% endif
+    %}>
+
+    {% for level in subject.levels %}
+    <input type="checkbox" id="{{ level.name }}Toggle" class="checkbox">
+    <label for="{{ level.name }}Toggle" class="level-button">{{ level.name }}</label>
+
+    <div class="unit-sliding-content">
+      {% for unit in level.units %}
+      <input type="checkbox" id="{{ level.name }}-{{ unit.name }}Toggle" class="checkbox">
+      <label for="{{ level.name }}-{{ unit.name }}Toggle" class="unit-button">{{ unit.name }}</label>
+
+      <div class="sliding-content">
+        <div class="curriculum-box">
+          {% for course in unit.courses %}
+          <div class="curriculum-item" onclick="window.location.href = '{{ url_for('lecture', course_id=course.id) }}'">
+            <p class="star">★</p>
+            <p>{{ course.name }}</p>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% endfor %}
+  </div>
+  {% endfor %}
+</div>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/curriculum.css') }}">
+
+{% endblock %}

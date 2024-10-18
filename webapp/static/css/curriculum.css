@@ -1,0 +1,146 @@
+.container{
+  width: 100%;
+  margin-top: 25%;
+  margin-bottom: 35%;
+  padding-left: 2%;
+  padding-right: 2%;
+}
+
+
+/* -------------tab---------------- */
+
+.tab-radio {
+  display: none;
+}
+
+.tab-label {
+  padding: 3px;
+  border: 2px solid #00a1e1;
+  border-radius: 30px;
+  background-color: rgb(255, 255, 255);
+  color: #00a1e1;
+  cursor: pointer;
+  text-align: center;
+  width: 20%;
+}
+
+/* ラジオボタンが選択されている場合のスタイル */
+.tab-radio:checked + .tab-label {
+  background-color: #007bbd;
+  border-color: #007bbd;
+  color: white;
+}
+
+/* ホバー時のスタイル */
+.tab-label:hover {
+  background-color: #007bbd;
+}
+
+
+.language-tabs {
+  margin-top: 25%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.tab {
+  background-color: #00a1e1;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.tab.active {
+  background-color: #007bbd;
+}
+
+/* -------------------------checkbox---------------- */
+.checkbox {
+  display: none;
+}
+
+.level-button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  color: #00a1e1;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.unit-sliding-content {
+  /* max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-out; */
+  margin-bottom: 20px;
+  border-radius: 5px;
+  padding: 0 10px;
+}
+
+.checkbox:checked + .level-button + .unit-sliding-content {
+  /* max-height: 200px; コンテンツが表示されるように適切な高さに設定 */
+  padding: 10px 10px;
+}
+
+.unit-button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #ffffff;
+  border:2px solid #00a1e1;
+  color: #00a1e1;
+  border-radius: 5px;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.unit-button:hover {
+  background-color: #007bbd;
+}
+
+.sliding-content h2 {
+  padding: 10px 0;
+  font-size: 18px;
+}
+
+.sliding-content {
+  max-height:0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-out;
+  background-color: #e3f2fd;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  padding: 0 10px;
+}
+
+.checkbox:checked + .unit-button + .sliding-content {
+  max-height: 1000px;/* コンテンツが表示されるように適切な高さに設定 */
+  padding: 10px 10px;
+}
+
+.curriculum-box {
+  display: flex;
+  justify-content: space-around;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3列 */
+  gap: 10px; /* アイテム間のスペース */
+  margin-bottom: 10px;
+}
+
+.curriculum-item {
+  color: white;
+  font-weight: 500;
+  font-size: small;
+  background:#00a1e1 ;
+  border-radius: 5px;
+  padding: 10px;
+  width: 100%;
+  text-align: center;
+}
+
+

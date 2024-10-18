@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+<<<<<<< HEAD
   <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css"> -->
   <link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1786543445051550"
@@ -12,6 +13,11 @@
   <script src="https://apis.google.com/js/api.js"></script>
   <script src="script.js"></script>
   <title>リアクションペーパー生成</title>
+=======
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}">
+  <script src="script.js"></script>
+  <title>ボトムアップスタディ</title>
+>>>>>>> develop
 </head>
 
 <body>
@@ -23,6 +29,7 @@
       <h1 class="title">Psycram</h1>
     </div>
   </header>
+<<<<<<< HEAD
     {% block content %}
 
 
@@ -34,6 +41,31 @@
       <button class="tab-button">home</button>
       <button class="tab-button">home</button>
     </footer>
+=======
+  {% block content %}
+
+
+
+  {% endblock%}
+  <footer class="tab-selecter">
+    <button class="tab-button" onclick="window.location.href = '/'"><img class="icon" src="././static/img/icon/home.png"
+        alt="home-icon">
+      <p class="icon-label">ホーム</p>
+    </button>
+    <button class="tab-button" onclick="window.location.href = '/roadmap'"><img class="icon" src="././static/img/icon/note.png"
+      alt="home-icon">
+    <p class="icon-label">学習ルート</p>
+  </button>
+    <button class="tab-button" onclick="window.location.href = '/curriculum'"><img class="icon"
+        src="././static/img/icon/graph.png" alt="graph-icon">
+      <p class="icon-label">講座一覧</p>
+    </button>
+    <button class="tab-button" onclick="window.location.href = '/mypage'"><img class="icon"
+        src="././static/img/icon/human.png" alt="human-icon">
+      <p class="icon-label">マイページ</p>
+    </button>
+  </footer>
+>>>>>>> develop
 </body>
 
 

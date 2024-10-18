@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}">
+  <script src="{{ url_for('static', filename='javascript/script.js') }}"></script>
+  <title>ボトムアップスタディ</title>
+</head>
+
+<body>
+  <header>
+    <div class="header-mini">
+      <p class="humberger-menu">☰</button>
+    </div>
+    <div class="header-large">
+      <h1 class="title">Psycram</h1>
+    </div>
+  </header>
+
+  {% for lecture in course.lectures %}
+  <section class="lecture-section {% if loop.first %}active{% endif %}">
+    <h3 class="question">{{ lecture.text }}</h3>
+    <img class="lecture-img" src="{{ url_for('static', filename='img/' + lecture.file + '.jpg') }}" alt="成績推移のグラフ">
+    {% for option in lecture.options %}
+    <button class="answer" data-correct="{{ 'true' if option.is_correct else 'false' }}">{{ option.text }}</button>
+    {% endfor %}
+  </section>
+  {% endfor %}
+  
+  <section class="lecture-section">
+    <h3 class="question">お疲れ</h3>
+    <img class="lecture-img" src="./static/img/red.jpg" alt="成績推移のグラフ">
+    <button class="answer">次へ</button> 
+    <button class="button" onclick="window.location.href = '/'">ホームへ</button>
+  </section>
+
+
+  <!-- 結果を表示するモーダル -->
+  <div id="result-modal" class="modal">
+    <div class="modal-content">
+      <h3 id="result-text"></h3>
+      <img class="lecture-img" src="./static/img/aiia.jpg" alt="解説写真">
+      <p>解説だああああ</p>
+      <button class="next-button" id="next-button">次へ</button>
+    </div>
+  </div>
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/lecture.css') }}">
+</body>
+
+
+</html>

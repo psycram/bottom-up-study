@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 
 
 
@@ -8,6 +9,49 @@
 
 
 
+=======
+{% extends "common.html" %}
+
+{% block content %}
+
+<div class="container">
+  <div class="language-tabs">
+    {% for index, subjectName in subjectNamesWithIndex %}
+      <input type="radio" id="tab{{ index }}" name="subject" class="tab-radio" 
+             {% if loop.first %}checked{% endif %}>
+      <label for="tab{{ index }}" class="tab-label">{{ subjectName }}</label>
+    {% endfor %}
+  </div>
+
+  <!-- レベルごとのチェックボックス -->
+  {% for levelName in levelNames %}
+  <input type="checkbox" id="{{ levelName }}Toggle" class="checkbox">
+  <label for="{{ levelName }}Toggle" class="level-button">{{ levelName }}</label>
+  
+  <div class="unit-sliding-content">
+    {% for unitName, unitItems in units.items() %}
+      <input type="checkbox" id="{{ unitName }}Toggle" class="checkbox">
+      <label for="{{ unitName }}Toggle" class="unit-button">{{ unitName }}</label>
+
+      <div class="sliding-content">
+        <div class="curriculum-box">
+          {% for item in unitItems %}
+          <div class="curriculum-item">
+            <p class="star">★</p>
+            <p>{{ item.course }}</p>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  {% endfor %}
+</div>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/curriculum.css') }}">
+
+{% endblock %}
+>>>>>>> develop
 
 
 
@@ -91,4 +135,83 @@ def charge():
         )
         return jsonify({"status": "success"})
     except stripe.error.StripeError as e:
+<<<<<<< HEAD
         return jsonify({"status": "error", "message": str(e)})
+=======
+        return jsonify({"status": "error", "message": str(e)})
+
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  const basicLevelToggle = document.getElementById('EasyLevelToggle');
+  const basicLevelContent = document.getElementById('EasyLevelContent');
+
+  const grammarLevelToggle = document.getElementById('grammarLevelToggle');
+  const grammarLevelContent = document.getElementById('grammarLevelContent');
+
+  basicLevelToggle.addEventListener('change', function () {
+      toggleContent(basicLevelToggle, basicLevelContent);
+  });
+
+  grammarLevelToggle.addEventListener('change', function () {
+      toggleContent(grammarLevelToggle, grammarLevelContent);
+  });
+
+  function toggleContent(toggle, content) {
+      if (toggle.checked) {
+          content.style.maxHeight = content.scrollHeight + "px";
+      } else {
+          content.style.maxHeight = null;
+      }
+  }
+});
+
+
+document.getElementById('WordsToggle').addEventListener('change', function () {
+    const content = document.getElementById('grammarToggle');
+    if (this.checked) {
+      content.style.display = 'block';
+    } else {
+      content.style.display = 'none';
+    }
+  });
+  
+  document.querySelectorAll('input[name="subject"]').forEach((radio) => {
+    radio.addEventListener('change', function () {
+      document.querySelectorAll('.subject-content').forEach((content) => {
+        content.style.display = 'none';
+      });
+      document.getElementById(`content-${this.id}`).style.display = 'block';
+    });
+  });
+  
+>>>>>>> develop

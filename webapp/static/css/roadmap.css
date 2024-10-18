@@ -1,0 +1,30 @@
+.container{
+  width: 100%;
+  margin-top: 25%;
+  margin-bottom: 35%;
+  padding-left: 2%;
+  padding-right: 2%;
+}
+
+
+.curriculum-box {
+  display: flex;
+  justify-content: space-around;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3列 */
+  gap: 10px; /* アイテム間のスペース */
+  margin-bottom: 10px;
+}
+
+.curriculum-item {
+  color: white;
+  font-weight: 500;
+  font-size: small;
+  background:#00a1e1 ;
+  border-radius: 5px;
+  padding: 10px;
+  width: 100%;
+  text-align: center;
+}
+
+

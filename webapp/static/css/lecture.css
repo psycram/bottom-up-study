@@ -1,0 +1,91 @@
+
+.lecture-section{
+  display: none; /* 全セクションを非表示 */
+  margin-top: 25%;
+  margin-left: 2%;
+  margin-right: 2%;
+  padding: 4%;
+  border: 2px solid #00a1e1;
+  border-radius: 10px;
+  height: 100%;
+}
+
+.lecture-section.active {
+  display: block; /* 表示されるセクション */
+}
+
+
+.lecture-img{
+  width:340px ;
+  height: 340px;
+  margin-bottom: 5%;
+}
+
+.answer{
+    display: block;
+    width: 100%;
+    margin-bottom: 5%;
+    padding: 10px;
+    background-color: #ffffff;
+    border:2px solid #00a1e1;
+    color: #00a1e1;
+    border-radius: 5px;
+    text-align: left;
+    cursor: pointer;
+  }
+
+  .modal {
+    display: none; /* 初期状態では非表示 */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* 半透明の背景 */
+  }
+  
+  .modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 5px;
+    width: 300px;
+    text-align: center;
+  }
+  
+  .correct {
+    color: green;
+    font-size: large;
+  }
+  
+  .incorrect {
+    color: red;
+    font-size: large;
+  }
+
+  .next-button{
+    display: block;
+    width: 100%;
+    margin-top: 15%;
+    padding: 10px;
+    background-color: #00a1e1;
+    border:2px solid #00a1e1;
+    color: #ffffff;
+    border-radius: 5px;
+    text-align: left;
+    cursor: pointer;
+  }
+
+  .button{
+    display: block;
+    width: 100%;
+    margin-top: 15%;
+    padding: 10px;
+    background-color: #00a1e1;
+    border:2px solid #00a1e1;
+    color: #ffffff;
+    border-radius: 5px;
+    text-align: left;
+    cursor: pointer;
+  }

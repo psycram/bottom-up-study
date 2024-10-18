@@ -1,6 +1,7 @@
 from webapp import app,db
 from flask import render_template,request,redirect,url_for,session,jsonify,Flask
 from werkzeug.security import check_password_hash
+<<<<<<< HEAD
 from .models.models import User,Curriculum
 from flask_login import login_user
 
@@ -25,6 +26,41 @@ def index():
     return render_template('pages/index.html', curriculums="")
 
 
+=======
+from .models.models import User,Curriculum,Subject,Course
+from flask_login import login_user
+
+@app.route('/')
+def index():
+    return render_template('pages/index.html')
+
+@app.route('/lecture/<int:course_id>')
+def lecture(course_id):
+    # course_id に基づいてコースを取得
+    course = Course.query.get_or_404(course_id)
+    
+    # course のデータを渡す
+    return render_template('pages/lecture.html', course=course)
+
+@app.route('/roadmap')
+def roadmap():
+    subjects = Subject.query.all()  # 科目と関連するデータを取得
+    return render_template('pages/roadmap.html', subjects = subjects)
+
+@app.route('/curriculum', methods=['GET'])
+def curriculum():
+    # データベースから取得
+    subjects = Subject.query.all()  # 科目と関連するデータを取得
+    
+    # タブ用にインデックス付きの科目リストを作成
+    subject_names_with_index = list(enumerate([s.name for s in subjects]))
+
+    return render_template(
+        'pages/curriculum.html',
+        subjects=subjects,
+        subjectNamesWithIndex=subject_names_with_index
+    )
+>>>>>>> develop
 
 
 @app.route('/login', methods=['GET', 'POST'])

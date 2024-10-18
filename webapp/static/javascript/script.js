@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 document.addEventListener("DOMContentLoaded", function() {
   var form = document.getElementById("create-text"); // フォームのIDに置き換える
   form.onsubmit = function() {
@@ -45,3 +46,56 @@ function appendDataToTable(data) {
 document.addEventListener('DOMContentLoaded', function() {
   gapi.load('client', start);
 });
+=======
+
+  
+  document.addEventListener('DOMContentLoaded', () => {
+    const sections = document.querySelectorAll('.lecture-section');
+    let currentSectionIndex = 0;
+  
+    const resultModal = document.getElementById('result-modal');
+    const resultText = document.getElementById('result-text');
+    const nextButton = document.getElementById('next-button');
+  
+    // 最初のセクションを表示
+    sections[currentSectionIndex].classList.add('active');
+  
+    // すべてのボタンにイベントリスナーを追加
+    sections.forEach((section, index) => {
+      const buttons = section.querySelectorAll('.answer');
+      buttons.forEach(button => {
+        button.addEventListener('click', () => {
+          const isCorrect = button.getAttribute('data-correct') === 'true';  // 正解か不正解かを判定
+  
+          // 結果に応じてモーダルにメッセージを表示
+          if (isCorrect) {
+            resultText.textContent = '正解！';
+            resultText.className = 'correct';
+          } else {
+            resultText.textContent = '不正解！';
+            resultText.className = 'incorrect';
+          }
+  
+          // モーダルを表示
+          resultModal.style.display = 'block';
+        });
+      });
+    });
+  
+    // 「次へ」ボタンを押したときの処理
+    nextButton.addEventListener('click', () => {
+      // モーダルを閉じる
+      resultModal.style.display = 'none';
+  
+      // 現在のセクションを非表示
+      sections[currentSectionIndex].classList.remove('active');
+  
+      // 次のセクションが存在する場合、表示
+      if (currentSectionIndex + 1 < sections.length) {
+        currentSectionIndex++;
+        sections[currentSectionIndex].classList.add('active');
+      }
+    });
+  });
+  
+>>>>>>> develop
