@@ -1,3 +1,9 @@
 env/ 
 venv/
 
+# .pycファイルを無視する
+*.pyc
+__pycache__/
+
+# データベースファイルを無視する
+instance/user.db
