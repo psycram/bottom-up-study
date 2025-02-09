@@ -6,30 +6,6 @@ class User(UserMixin, db.Model):
     username = db.Column(db.String(50), nullable=False, unique=True)
     password = db.Column(db.String(255))
 
-class Curriculum(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-<<<<<<< HEAD
-    goallevel = db.Column(db.Integer, nullable=False)
-    startlevel = db.Column(db.Integer,nullable=False)
-    content4 = db.Column(db.String(255))
-    content5 = db.Column(db.String(255))
-    content6 = db.Column(db.String(255))
-    content7 = db.Column(db.String(255))
-    content8 = db.Column(db.String(255))
-    content9 = db.Column(db.String(255))
-    content10 = db.Column(db.String(255))
-    content11 = db.Column(db.String(255))
-    content12 = db.Column(db.String(255))
-    content1 = db.Column(db.String(255))
-    content2 = db.Column(db.String(255))
-    
-=======
-    subject = db.Column(db.String(255), nullable=False)
-    level = db.Column(db.String(255), nullable=False)
-    unit = db.Column(db.String(255),nullable=False)
-    course = db.Column(db.String(255),nullable=False)
-    
-    from flask_sqlalchemy import SQLAlchemy
 
 # 科目（Subject）
 class Subject(db.Model):
@@ -62,6 +38,7 @@ class Course(db.Model):
     __tablename__ = 'courses'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
+    priority = db.Column(db.Integer, nullable=False)
 
     unit_id = db.Column(db.Integer, db.ForeignKey('units.id'), nullable=False)
     lectures = db.relationship('Lecture', backref='course', lazy=True)
@@ -73,8 +50,8 @@ class Lecture(db.Model):
     title = db.Column(db.String(100), nullable=False)
     file = db.Column(db.String(100), nullable=False)
     text = db.Column(db.String(100), nullable=False)
-    options = db.relationship('Option', backref='lecture', lazy=True)
 
+    options = db.relationship('Option', backref='lecture', lazy=True)
     course_id = db.Column(db.Integer, db.ForeignKey('courses.id'), nullable=False)
 
 class Option(db.Model):
@@ -84,4 +61,25 @@ class Option(db.Model):
     is_correct = db.Column(db.Boolean, nullable=False, default=False)
 
     lecture_id = db.Column(db.Integer, db.ForeignKey('lectures.id'), nullable=False)
->>>>>>> develop
+
+
+class UserLectureProgress(db.Model):
+    __tablename__ = 'user_lecture_progress'
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    lecture_id = db.Column(db.Integer, db.ForeignKey('lectures.id'), nullable=False)
+    attempt_number = db.Column(db.Integer, nullable=False, default=1)
+    is_correct = db.Column(db.Boolean, nullable=False)
+    option_text = db.Column(db.String(255), nullable=False)
+    solved_at = db.Column(db.DateTime, nullable=False)
+    review = db.Column(db.Integer)
+    user = db.relationship('User', backref=db.backref('lecture_progress', lazy=True))
+    lecture = db.relationship('Lecture', backref=db.backref('user_progress', lazy=True))
+
+
+class UserLoginHistory(db.Model):
+    __tablename__ = 'user_login_history'
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    login_date = db.Column(db.Date, nullable=False)  # 各ログイン日
+    user = db.relationship('User', backref=db.backref('login_history', lazy=True))

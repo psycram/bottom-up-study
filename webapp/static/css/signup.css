@@ -1,31 +1,41 @@
-.upper-space {
-    height: 70px;
-    width: 100%;
-}
-
 .signup-container {
     background-color: white;
-    width: 50%;
-    margin: auto;
-    padding: 1% 2%;
-    border-radius: 2.5%;
+    width: 100%;
+    margin-top: 25%;
+    min-height: 100vh;
 }
 
 .signup-text{
-    font-size: 2rem;
-    text-align: center;
+    font-size: 24px;
+}
+
+.input-box{
+    width: 90%;
+    margin: auto;
+    margin-top: 5%;
 }
 
 .input-text-box {
+    display: block;
     background-color: white;
-    width: 30em;
+    width: 100%;
+    border:2px solid #00a1e1;
+    border-radius: 5px;
+    height: 36px;
 }
 
-.signup-button {
-    margin-left: 80%;
+.signup-button-box {
+    margin: auto;
+    margin-top: 5%;
+    width: 90%;
 }
 
 #signup-decide-button {
     background-color: orange;
     border: none;
+    border-radius: 5px;
+    padding: 5px;
+    width: 100%;
+    font-size: large;
+    font-weight: bold;
 }

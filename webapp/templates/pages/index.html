@@ -15,55 +15,50 @@
     </div>
     <div class="avatar-box">
       <div class="avatar"></div>
+      <h2> {{ current_user.username }}</h2>
     </div>
   </div>
 
-<<<<<<< HEAD
-  <button class="continue-btn">前回の続きから始める</button>
-=======
-  <button class="continue-btn" onclick="window.location.href = '/lecture'">前回の続きから始める</button>
->>>>>>> develop
+  <button class="continue-btn" onclick="window.location.href = '/continue'">前回の続きから始める</button>
 
   <div class="recommended-curriculum-box">
-    <div class="curriculum-item">
-      <p class="star">★</p>
-      <p>英単語 大学受験編 その1</p>
+    <div onclick="window.location.href = '/review-today'" class="curriculum-item">
+      <p>今日の復習</p>
     </div>
-    <div class="curriculum-item recommended">
+    <div onclick="window.location.href = '/review-yesterday'"  class="curriculum-item recommended">
       <span class="recommend-label">オススメ！</span>
-      <p class="star">★</p>
-      <p>英単語 大学受験編 その2</p>
-    </div>
-    <div class="curriculum-item">
-      <p class="star">★</p>
-      <p>英単語 大学受験編 その3</p>
+      <p>昨日の復習</p>
     </div>
   </div>
 
   <p class="curriculum-link">カリキュラムを開く</p>
 
 </section>
-
 <section class="stats-section">
   <div class="stats">
     <div class="stats-item">
       <p>連続勉強日数</p>
-      <h2>253 日</h2>
+      <h2> {{ consecutive_days }} 日</h2>
     </div>
     <div class="stats-item">
-      <p>総勉強時間</p>
-      <h2>253 時間</h2>
+      <p>解いた問題数</p>
+      <h2>{{ lecture_count }} 回</h2>
     </div>
   </div>
 </section>
 
 <div class="graph-section">
-  <p>成績推移</p>
-<<<<<<< HEAD
-  <img src="graph.png" alt="成績推移のグラフ">
-=======
-  <img src="../../static/img/iiii.jpg" alt="グラフ">
->>>>>>> develop
+  <h3>直近1週間の勉強記録</h3>
+  <canvas id="studyChart" style="width: 70%; height: 100%;"></canvas>
+
+
+  <!-- ラベルとデータをJSON形式でテンプレートに埋め込む -->
+  <script type="application/json" id="chartLabels">{{ labels | tojson }}</script>
+  <script type="application/json" id="chartData">{{ data | tojson }}</script>
+
+  <!-- Chart.jsと外部JavaScriptファイルの読み込み -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="{{ url_for('static', filename='javascript/index.js') }}"></script>
 </div>
 
 <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">

@@ -1,217 +1,26 @@
 
-<<<<<<< HEAD
-
-
-
-
-
-
-
-
-
-=======
-{% extends "common.html" %}
-
-{% block content %}
-
-<div class="container">
-  <div class="language-tabs">
-    {% for index, subjectName in subjectNamesWithIndex %}
-      <input type="radio" id="tab{{ index }}" name="subject" class="tab-radio" 
-             {% if loop.first %}checked{% endif %}>
-      <label for="tab{{ index }}" class="tab-label">{{ subjectName }}</label>
-    {% endfor %}
-  </div>
-
-  <!-- レベルごとのチェックボックス -->
-  {% for levelName in levelNames %}
-  <input type="checkbox" id="{{ levelName }}Toggle" class="checkbox">
-  <label for="{{ levelName }}Toggle" class="level-button">{{ levelName }}</label>
-  
-  <div class="unit-sliding-content">
-    {% for unitName, unitItems in units.items() %}
-      <input type="checkbox" id="{{ unitName }}Toggle" class="checkbox">
-      <label for="{{ unitName }}Toggle" class="unit-button">{{ unitName }}</label>
-
-      <div class="sliding-content">
-        <div class="curriculum-box">
-          {% for item in unitItems %}
-          <div class="curriculum-item">
-            <p class="star">★</p>
-            <p>{{ item.course }}</p>
-          </div>
-          {% endfor %}
-        </div>
-      </div>
-    {% endfor %}
-  </div>
-  {% endfor %}
-</div>
-
-<link rel="stylesheet" href="{{ url_for('static', filename='css/curriculum.css') }}">
-
-{% endblock %}
->>>>>>> develop
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-from flask import jsonify
-from .models.models import User
-from flask_login import login_user
-import stripe
-
-@app.route('/premium-output', methods=['POST'])
-def output_premium_text():
-    # フォームデータから入力テキストと選択された機能を取得
-    input_text = request.form['input-text']
-    selected_option = request.form['function']  # 'function'は選択肢のname属性
-
-    # 選択されたオプションに応じて異なるプロンプトを設定
-    if selected_option == 'reaction-paper':
-        prompt = "リアクションペーパーを生成"
-    elif selected_option == 'note-creation':
-        prompt = "ノートを生成"
-    elif selected_option == 'problem-creation':
-        prompt = "問題を生成"
-
-    # GPTモデルを使ってテキストを解析する
-    response = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
-        messages=[
-            {"role": "system", "content": prompt},
-            {"role": "user", "content": input_text}
-        ],
-        max_tokens=400
-    )
-
-    # 解析結果を取得して返す
-    output_text = response['choices'][0]['message']['content']
-    return render_template('pages/index.html', input_text=input_text, output_text=output_text)
-
-
-@app.route('/premium')
-def premium():
-    return render_template('pages/premium.html', output_text="")
-
-@app.route('/finance')
-def finance():
-    return render_template('pages/finance.html')
-
-@app.route('/mypage')
-def mypage():
-    return render_template('pages/mypage.html')
-
-@app.route('/charge', methods=['POST'])
-def charge():
-    try:
-        # フロントエンドから送られてくるトークンを取得
-        token = request.form['stripeToken']
-        
-        # 決済処理
-        charge = stripe.Charge.create(
-            amount=1000,  # 単位は最小通貨単位（例：円なら「円」、ドルなら「セント」）
-            currency='jpy',
-            description='Example charge',
-            source=token,
-        )
-        return jsonify({"status": "success"})
-    except stripe.error.StripeError as e:
-<<<<<<< HEAD
-        return jsonify({"status": "error", "message": str(e)})
-=======
-        return jsonify({"status": "error", "message": str(e)})
-
-
-
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-document.addEventListener('DOMContentLoaded', function () {
-  const basicLevelToggle = document.getElementById('EasyLevelToggle');
-  const basicLevelContent = document.getElementById('EasyLevelContent');
-
-  const grammarLevelToggle = document.getElementById('grammarLevelToggle');
-  const grammarLevelContent = document.getElementById('grammarLevelContent');
-
-  basicLevelToggle.addEventListener('change', function () {
-      toggleContent(basicLevelToggle, basicLevelContent);
-  });
-
-  grammarLevelToggle.addEventListener('change', function () {
-      toggleContent(grammarLevelToggle, grammarLevelContent);
-  });
-
-  function toggleContent(toggle, content) {
-      if (toggle.checked) {
-          content.style.maxHeight = content.scrollHeight + "px";
-      } else {
-          content.style.maxHeight = null;
-      }
-  }
-});
-
-
-document.getElementById('WordsToggle').addEventListener('change', function () {
-    const content = document.getElementById('grammarToggle');
-    if (this.checked) {
-      content.style.display = 'block';
-    } else {
-      content.style.display = 'none';
-    }
-  });
-  
-  document.querySelectorAll('input[name="subject"]').forEach((radio) => {
-    radio.addEventListener('change', function () {
-      document.querySelectorAll('.subject-content').forEach((content) => {
-        content.style.display = 'none';
-      });
-      document.getElementById(`content-${this.id}`).style.display = 'block';
-    });
-  });
-  
->>>>>>> develop
+@app.route('/next-course')
+@login_required
+def load_next_course():
+    # ユーザーがすでに完了した、または不要と判断された講座のIDリストを取得
+    completed_course_ids = [progress.course_id for progress in UserCourseProgress.query.filter_by(user_id=current_user.id).all()]
+    unnecessary_course_ids = [unnecessary.course_id for unnecessary in UnnecessaryCourses.query.filter_by(user_id=current_user.id).all()]
+
+    # 完了しておらず、不要とされていない講座のうち、priorityが最も高いものを取得
+    next_course = Course.query.filter(
+        ~Course.id.in_(completed_course_ids + unnecessary_course_ids)
+    ).order_by(Course.priority).first()
+
+    if not next_course:
+        # 未完了で必要なコースが存在しない場合、ホームにリダイレクト
+        return redirect(url_for('index'))
+
+    # 次のコースに紐づくすべてのLectureを取得
+    lectures = Lecture.query.filter_by(course_id=next_course.id).order_by(Lecture.id).all()
+
+    if not lectures:
+        # コース内にレクチャーがない場合もホームにリダイレクト
+        return redirect(url_for('index'))
+
+    # コースとその講義リストをテンプレートに渡して表示
+    return render_template('pages/lecture.html', course=next_course, lectures=lectures)

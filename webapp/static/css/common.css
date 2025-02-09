@@ -1,6 +1,4 @@
 /* 共通スタイル */
-<<<<<<< HEAD
-=======
 
 * {
   margin: 0;
@@ -8,16 +6,11 @@
   box-sizing: border-box;
 }
 
->>>>>>> develop
 body {
   font-family: Arial, sans-serif;
   background-color: #fff;
   color: #333;
-<<<<<<< HEAD
-  height: 100vh;
-=======
   min-height: 100vh;
->>>>>>> develop
 }
 
 
@@ -47,14 +40,8 @@ header {
 }
 
 .title {
-<<<<<<< HEAD
-  font-size: 24px;
-  color: #00a1e1;
-  margin-left: 10%;
-=======
   font-size: 38px;
   color:#00a1e1 ;
->>>>>>> develop
 }
 
 
@@ -75,9 +62,6 @@ header {
   color: rgb(0, 162, 255);
   text-align: center;
   border: none;
-<<<<<<< HEAD
-}
-=======
 }
 
 .icon{
@@ -88,4 +72,3 @@ header {
   font-weight: bold;
 }
 
->>>>>>> develop

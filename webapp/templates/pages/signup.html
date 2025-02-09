@@ -1,29 +1,26 @@
 {% extends "common.html" %}
 
 {% block content %}
-<div class="upper-space">
-
-</div>
 <section class="signup-container">
   <form id="signup" action="/signup" method="post">
-    <div>
+    <div class="input-box">
       <h4 class="signup-text">新規登録</h4>
       <span>{{notLogin}}</span>
     </div>
-    <div>
+    <div class="input-box">
       <label for="email">メールアドレス</label>
       <input type="text" id="username" name="username" class="input-text-box">
     </div>
-    <div>
+    <div class="input-box">
       <label for="password">パスワード</label>
       <input type="password" id="password" name="password" class="input-text-box">
     </div>
-    <div>
+    <div class="input-box">
       <label for="repassword">パスワード（確認用）</label>
       <input type="repassword" id="repassword" name="repassword" class="input-text-box">
     </div>
-    <div class="signup-button">
-      <input type="submit" id="signup-decide-button" value="登録">
+    <div class="signup-button-box">
+      <input type="submit" id="signup-decide-button" class="signup-button" value="登録">
     </div>
   </form>
 </section>

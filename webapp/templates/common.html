@@ -4,20 +4,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
-<<<<<<< HEAD
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css"> -->
+  <!-- <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}"> -->
   <link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1786543445051550"
-    crossorigin="anonymous"></script>
-  <script src="https://apis.google.com/js/api.js"></script>
-  <script src="script.js"></script>
-  <title>リアクションペーパー生成</title>
-=======
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}">
-  <script src="script.js"></script>
+  <script src="{{ url_for('static', filename='javascript/script.js') }}"></script>
   <title>ボトムアップスタディ</title>
->>>>>>> develop
 </head>
 
 <body>
@@ -29,19 +19,6 @@
       <h1 class="title">Psycram</h1>
     </div>
   </header>
-<<<<<<< HEAD
-    {% block content %}
-
-
-
-    {% endblock%}
-    <footer class="tab-selecter">
-      <button class="tab-button">home</button>
-      <button class="tab-button">home</button>
-      <button class="tab-button">home</button>
-      <button class="tab-button">home</button>
-    </footer>
-=======
   {% block content %}
 
 
@@ -65,7 +42,6 @@
       <p class="icon-label">マイページ</p>
     </button>
   </footer>
->>>>>>> develop
 </body>
 
 
